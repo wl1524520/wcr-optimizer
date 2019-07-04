@@ -87,9 +87,6 @@ function wcr_rest_prepare_post($data, $post, $request) {
     } else {
         $pure_post['thumb'] = wpjam_get_post_first_image($_data['content']['rendered']);
     }
-    if ($pure_post['thumb'] == '') {
-        $pure_post['thumb'] = ' https://qn.wanglu.info/wp-content/uploads/2015/05/post_thumbnail.png';
-    }
 
     $pure_post['categories']    = $_data['categories'];
     // $pure_post['tags']          = $_data['tags'];
