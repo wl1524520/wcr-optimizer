@@ -12,7 +12,9 @@
 // the values are defined at the add_settings_section() function.
 function wcr_section_basic_callback( $args ) {
     ?>
-    <p id="<?php echo esc_attr( $args['id'] ); ?>"><?php esc_html_e( '添加的新区域', 'wporg' ); ?></p>
+    <p id="<?php echo esc_attr( $args['id'] ); ?>">
+        <?php esc_html_e( '通过内置 API 关闭不需要的功能提高网站性能', 'wcr_optimizer' ); ?>
+    </p>
     <?php
 }
     

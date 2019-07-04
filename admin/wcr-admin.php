@@ -9,7 +9,7 @@ require_once(WCR_BASIC_PLUGIN_DIR . '/admin/wcr-options.php');
 function wcr_options_page() {
     // add top level menu page
     add_menu_page(
-        '戊辰人性能优化',
+        'WCR-Optimizer 性能优化',
         'WCR-Optimizer',
         'manage_options', // 权限
         'wcr_optimizer', // menu slug
@@ -41,7 +41,7 @@ function wcr_settings_init() {
     // 在 wporg 页面中添加一个区域（SECTION）
     add_settings_section(
         'wcr_section_basic', // SECTION 的唯一 ID，$args['id']
-        __('区域（SECTION）标题', 'wcr_optimizer'), // 标题
+        __('基本性能优化', 'wcr_optimizer'), // 标题
         'wcr_section_basic_callback', // 回调函数
         'wcr_optimizer' // 属于哪个页面
     );
