@@ -14,7 +14,7 @@ function wcr_options_page() {
         'manage_options', // 权限
         'wcr_optimizer', // menu slug
         'wcr_optimizer_top_page', // 回调函数
-        'dashicons-dashboard', // 图标
+        'dashicons-admin-generic', // 图标
         59
     );
     add_submenu_page(
