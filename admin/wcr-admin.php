@@ -19,6 +19,16 @@ function wcr_options_page() {
     );
     add_submenu_page(
         'wcr_optimizer', // 父级菜单的 menu slug
+        'WCR-Optimizer 性能优化',
+        '性能优化',
+        'manage_options',
+        'wcr_optimizer', // 与顶级菜单的 menu slug 相同，用于覆盖顶级菜单在子级菜单中的显示
+        'wcr_optimizer_top_page'
+    );
+    
+    // 增加子菜单
+    add_submenu_page(
+        'wcr_optimizer', // 父级菜单的 menu slug
         '其它默认优化说明',
         '插件说明',
         'manage_options',
