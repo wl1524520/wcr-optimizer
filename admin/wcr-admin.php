@@ -137,6 +137,19 @@ function wcr_settings_init() {
             'wcr_custom_data' => 'MCE 界面增加分页按钮',
         ]
     );
+    add_settings_field(
+        'wcr_rest_enabled', // 添加字段ID
+        // use $args' label_for to populate the id inside the callback
+        __( 'REST接口扩展优化', 'wcr_optimizer' ), // 标题 字段显示名
+        'wcr_optimizer_options_custom_callback', // 回调函数
+        'wcr_optimizer', // 属于哪个页面
+        'wcr_section_basic', // 对应 add_settings_section 中的 ID
+        [
+            'label_for' => 'wcr_rest_enabled',
+            'class' => 'wcr_row',
+            'wcr_custom_data' => '对系统原有 REST api 接口进行扩展优化',
+        ]
+    );
 }
     
 /**

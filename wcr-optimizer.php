@@ -20,6 +20,7 @@ require_once(WCR_BASIC_PLUGIN_DIR . '/admin/wcr-admin.php');
 require_once(WCR_BASIC_PLUGIN_DIR . '/wcr-functions.php');    // 默认选项
 require_once(WCR_BASIC_PLUGIN_DIR . '/wcr-mail.php');         // 邮件通知
 
-if (!is_admin()) {
+$options = get_option('wcr_optimizer_settings');
+if (isset($options['wcr_rest_enabled']) && $options['wcr_rest_enabled'] && !is_admin()) {
     require_once(WCR_BASIC_PLUGIN_DIR . '/wcr-rest.php');     // RESTFull API
 }
