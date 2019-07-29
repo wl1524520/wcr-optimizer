@@ -59,6 +59,12 @@ if (isset($options['add_next_page_button']) && $options['add_next_page_button'])
 	}
 }
 
+// 彻底取消 Widget
+if (isset($options['wcr_disable_widgets']) && $options['wcr_disable_widgets']) {
+    remove_action('plugins_loaded', 'wp_maybe_load_widgets', 0);
+    remove_action('init', 'wp_widgets_init', 1);
+}
+
 // 移除包裹在<img>标签上的<p>标签
 if( isset($options['wcr_remove_out_p_for_img']) && $options['wcr_remove_out_p_for_img'] ){
 	add_filter('the_content', 'wpwcr_content');
