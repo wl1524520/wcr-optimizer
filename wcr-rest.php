@@ -48,6 +48,8 @@ function wcr_rest_prepare_post($data, $post, $request) {
     // 字段：PTYPE_CODE 多个产品编码，用英文逗号分隔
 	$ptype_code = esc_html(get_post_meta($post->ID, 'PTYPE_CODE', true));
     if ($ptype_code) {
+        // 将中文逗号转换为英文逗号
+        $ptype_code = str_replace("，", ",", $ptype_code);
 	    $pure_post['ptype_code'] = explode(',', $ptype_code);
     }
 
