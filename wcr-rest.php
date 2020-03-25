@@ -41,17 +41,20 @@ function wcr_rest_prepare_post($data, $post, $request) {
     $pure_post['modified']  = date('Y-m-d H:i:s', strtotime($_data['modified']));
     $pure_post['title']     = $_data['title']['rendered'];
     $pure_post['format']    = $_data['format'];
-    $pure_post['excerpt']   = str_replace("\n", "", strip_tags($_data['excerpt']['rendered']));
+    // $pure_post['excerpt']   = str_replace("\n", "", strip_tags($_data['excerpt']['rendered']));
     $pure_post['author']    = get_the_author_meta('nickname', $_data['author']);
 
 	// 以下是要添加的自定义字段
-    // 字段：PTYPE_CODE 多个产品编码，用英文逗号分隔
-	$ptype_code = esc_html(get_post_meta($post->ID, 'PTYPE_CODE', true));
+    // 字段：pusercode 多个产品编码，用英文逗号分隔
+	$ptype_code = esc_html(get_post_meta($post->ID, '_pusercode', true));
     if ($ptype_code) {
         // 将中文逗号转换为英文逗号
         $ptype_code = str_replace("，", ",", $ptype_code);
 	    $pure_post['ptype_code'] = explode(',', $ptype_code);
     }
+	$ptype_price = esc_html(get_post_meta($post->ID, '_price', true));
+    $pure_post['ptype_price'] = $ptype_price == '' ? 0 : $ptype_price;
+	$pure_post['ptype_desc'] = esc_html(get_post_meta($post->ID, '_ptype_desc', true));
 
     if ( isset($params['id']) || $show_content ) {
         /*

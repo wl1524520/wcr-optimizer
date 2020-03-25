@@ -18,6 +18,8 @@ define('WCR_BASIC_PLUGIN_DIR', dirname( __FILE__ ));
 require_once(WCR_BASIC_PLUGIN_DIR . '/admin/wcr-admin.php');
 
 require_once(WCR_BASIC_PLUGIN_DIR . '/wcr-functions.php');    // 默认选项
+require_once(WCR_BASIC_PLUGIN_DIR . '/wcr-meta-box.php');    // 默认选项
+require_once(WCR_BASIC_PLUGIN_DIR . '/wcr-search.php');    // 自定义字段搜索
 require_once(WCR_BASIC_PLUGIN_DIR . '/wcr-mail.php');         // 邮件通知
 
 $options = get_option('wcr_optimizer_settings');
