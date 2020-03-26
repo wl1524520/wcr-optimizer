@@ -173,4 +173,7 @@ add_filter('wp_calculate_image_srcset', '__return_false', PHP_INT_MAX);
 // Remove the reponsive stuff from the content
 remove_filter('the_content', 'wp_make_content_images_responsive');
 
-
+//使WordPress支持post thumbnail
+if ( function_exists( 'add_theme_support' ) ) {
+    add_theme_support( 'post-thumbnails' );
+}
