@@ -53,7 +53,7 @@ function wcr_rest_prepare_post($data, $post, $request) {
 	    $pure_post['ptype_code'] = explode(',', $ptype_code);
     }
 	$ptype_price = esc_html(get_post_meta($post->ID, '_price', true));
-    $pure_post['ptype_price'] = $ptype_price == '' ? 0 : $ptype_price;
+    $pure_post['price'] = $ptype_price == '' ? 0 : $ptype_price;
 	$pure_post['ptype_desc'] = esc_html(get_post_meta($post->ID, '_ptype_desc', true));
 
     if ( isset($params['id']) || $show_content ) {
@@ -78,7 +78,7 @@ function wcr_rest_prepare_post($data, $post, $request) {
                 $pure_post['content'] = '';
             }
         } else {
-            $pure_post['content']       = str_replace("\n", "", $_data['content']['rendered']);
+            $pure_post['content'] = str_replace("\n", "", $_data['content']['rendered']);
         }
     }
 
@@ -88,9 +88,13 @@ function wcr_rest_prepare_post($data, $post, $request) {
     // get url of the original size
     $featured_image_url = wp_get_attachment_image_src($featured_image_id, 'original');
 	if( $featured_image_url ) {
+        // wpjam_get_thumbnail($img_url); // 简单替换成 CDN 域名
+	    // wpjam_get_thumbnail($img_url, ['width'=>100, 'height'=>200], $crop=1); // 宽100，高200，进行裁剪
+	    // wpjam_get_thumbnail($img_url, '100x200', $crop=1);
+	    // wpjam_get_thumbnail($img_url, [100,200], $crop=1);
         $pure_post['thumb'] = $featured_image_url[0];
     } else {
-        $pure_post['thumb'] = wpjam_get_post_first_image($_data['content']['rendered']);
+        $pure_post['thumb'] = wpjam_get_default_thumbnail_url([800,800], $crop=1);
     }
 
     $pure_post['categories']    = $_data['categories'];
