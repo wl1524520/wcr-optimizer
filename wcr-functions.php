@@ -109,18 +109,6 @@ if( true ){
 }
  */
 
-// 移除系统自动添加的 .recentcomments 样式
-if( isset($options['remove_recent_comment_style']) && $options['remove_recent_comment_style'] ){
-	function wpwcr_remove_recent_comment_style() {
-		global $wp_widget_factory;
-		remove_action(
-	            'wp_head',
-	            array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' )
-	        );
-	}
-	add_action( 'widgets_init', 'wpwcr_remove_recent_comment_style' );
-}
-
 // 去掉图片中 width 和 height 属性
 if (isset($options['remove_width_height_attribute']) && $options['remove_width_height_attribute']) {
 	add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );

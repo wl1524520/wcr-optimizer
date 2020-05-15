@@ -110,19 +110,6 @@ function wcr_settings_init() {
         ]
     );
     add_settings_field(
-        'remove_recent_comment_style', // 添加字段ID
-        // use $args' label_for to populate the id inside the callback
-        __( '评论样式优化', 'wcr_optimizer' ), // 标题 字段显示名
-        'wcr_optimizer_options_custom_callback', // 回调函数
-        'wcr_optimizer', // 属于哪个页面
-        'wcr_section_basic', // 对应 add_settings_section 中的 ID
-        [
-            'label_for' => 'remove_recent_comment_style',
-            'class' => 'wcr_row',
-            'wcr_custom_data' => '移除系统自动添加的 .recentcomments 评论样式',
-        ]
-    );
-    add_settings_field(
         'remove_width_height_attribute', // 添加字段ID
         // use $args' label_for to populate the id inside the callback
         __( '文章图片属性优化', 'wcr_optimizer' ), // 标题 字段显示名
