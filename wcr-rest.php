@@ -51,6 +51,8 @@ function wcr_rest_prepare_post($data, $post, $request) {
         // 将中文逗号转换为英文逗号
         $ptype_code = str_replace("，", ",", $ptype_code);
 	    $pure_post['ptype_code'] = explode(',', $ptype_code);
+    } else {
+	    $pure_post['ptype_code'] = [];
     }
 	$ptype_price = esc_html(get_post_meta($post->ID, '_price', true));
     $pure_post['price'] = $ptype_price == '' ? 0 : $ptype_price;
@@ -92,7 +94,7 @@ function wcr_rest_prepare_post($data, $post, $request) {
 	    // wpjam_get_thumbnail($img_url, ['width'=>100, 'height'=>200], $crop=1); // 宽100，高200，进行裁剪
 	    // wpjam_get_thumbnail($img_url, '100x200', $crop=1);
 	    // wpjam_get_thumbnail($img_url, [100,200], $crop=1);
-        $pure_post['thumb'] = $featured_image_url[0];
+        $pure_post['thumb'] = wpjam_get_thumbnail($featured_image_url[0], [800,800], $crop=1);
     } else {
         $pure_post['thumb'] = wpjam_get_default_thumbnail_url([800,800], $crop=1);
     }
