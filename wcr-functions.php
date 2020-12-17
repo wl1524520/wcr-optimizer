@@ -169,16 +169,19 @@ if ( function_exists( 'add_theme_support' ) ) {
 // 使用中文镜像更新
 if (isset($options['wcr_use_china_wp']) && $options['wcr_use_china_wp']) {
     add_filter('site_transient_update_core', function($value){
-        foreach ($value->updates as &$update) {
-            if($update->locale == 'zh_CN'){
-                $update->download = 'http://cn.wp101.net/latest-zh_CN.zip';
-                $update->packages->full = 'http://cn.wp101.net/latest-zh_CN.zip';
-                     
+        if ($value) {
+            foreach ($value->updates as &$update) {
+                if($update->locale == 'zh_CN'){
+                    $update->download = 'http://cn.wp101.net/latest-zh_CN.zip';
+                    $update->packages->full = 'http://cn.wp101.net/latest-zh_CN.zip';
+                         
+                }
+                 
             }
-             
+
         }
          
-         return $value;
+        return $value;
         
     });
 }
