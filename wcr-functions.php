@@ -165,3 +165,20 @@ remove_filter('the_content', 'wp_make_content_images_responsive');
 if ( function_exists( 'add_theme_support' ) ) {
     add_theme_support( 'post-thumbnails' );
 }
+
+// 使用中文镜像更新
+if (True) {
+    add_filter('site_transient_update_core', function($value){
+        foreach ($value->updates as &$update) {
+            if($update->locale == 'zh_CN'){
+                $update->download = 'http://cn.wp101.net/latest-zh_CN.zip';
+                $update->packages->full = 'http://cn.wp101.net/latest-zh_CN.zip';
+                     
+            }
+             
+        }
+         
+         return $value;
+        
+    });
+}
