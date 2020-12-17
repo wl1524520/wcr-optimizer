@@ -161,6 +161,19 @@ function wcr_settings_init() {
             'wcr_custom_data' => '我们现在使用 WordPress 基本把它当做 Admin UI 管理后台来使用，然后自己写 JSON 格式的 REST API 给客户端用。不再使用的东西就要屏蔽掉。',
         ]
     );
+    add_settings_field(
+        'wcr_use_china_wp', // 添加字段ID
+        // use $args' label_for to populate the id inside the callback
+        __( '国内镜像更新 WP', 'wcr_optimizer' ), // 标题 字段显示名
+        'wcr_optimizer_options_custom_callback', // 回调函数
+        'wcr_optimizer', // 属于哪个页面
+        'wcr_section_basic', // 对应 add_settings_section 中的 ID
+        [
+            'label_for' => 'wcr_use_china_wp',
+            'class' => 'wcr_row',
+            'wcr_custom_data' => '使用国内 cn.wp101.net 镜像更新。',
+        ]
+    );
 }
     
 /**

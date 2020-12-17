@@ -167,7 +167,7 @@ if ( function_exists( 'add_theme_support' ) ) {
 }
 
 // 使用中文镜像更新
-if (True) {
+if (isset($options['wcr_use_china_wp']) && $options['wcr_use_china_wp']) {
     add_filter('site_transient_update_core', function($value){
         foreach ($value->updates as &$update) {
             if($update->locale == 'zh_CN'){
